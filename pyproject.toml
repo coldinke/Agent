@@ -4,4 +4,12 @@ version = "0.1.0"
 description = "AI Agent in terminal, give up the GUI"
 readme = "README.md"
 requires-python = ">=3.13"
-dependencies = []
+dependencies = [
+    "argparse>=1.4.0",
+    "black>=25.1.0",
+    "flake8>=7.2.0",
+    "mypy>=1.15.0",
+    "openai>=1.72.0",
+    "rich>=14.0.0",
+    "tomli>=2.2.1",
+]

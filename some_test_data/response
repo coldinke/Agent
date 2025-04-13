@@ -1,0 +1,33 @@
+ChatCompletion(
+    id="0b2f1d5b-f4b1-4229-8fa9-83af3d05cc64",
+    choices=[
+        Choice(
+            finish_reason="stop",
+            index=0,
+            logprobs=None,
+            message=ChatCompletionMessage(
+                content='It looks like you\'re trying to use the DeepSeek API to compare two numbers (9.11 and 9.8). However, there are a few issues with your code:\n\n1. You\'re missing an actual API key in `api_key=""` - you\'d need a valid key to use the service\n2. The `reasoning_content` attribute doesn\'t exist in the standard OpenAI API response format - this might be specific to DeepSeek\'s implementation\n3. The base URL points to DeepSeek\'s API, which may have different response formats than standard OpenAI\n\nHere\'s what a corrected version might look like (assuming DeepSeek\'s API follows similar patterns):\n\n```python\nfrom openai import OpenAI\n\nclient = OpenAI(api_key="your_api_key_here", base_url="https://api.deepseek.com")\n\nmessages = [{"role": "user", "content": "9.11 and 9.8, which is greater?"}]\nresponse = client.chat.completions.create(\n    model="deepseek-reasoner",\n    messages=messages\n)\n\n# Try these instead if reasoning_content doesn\'t work\ncontent = response.choices[0].message.content\nprint("Response:", content)\n\n# Or check what attributes are actually available:\nprint("Available attributes:", dir(response.choices[0].message))\n```\n\nThe answer to your actual question (9.11 vs 9.8):\n- 9.8 is greater than 9.11 because when comparing decimals:\n  - The whole number part is equal (9 = 9)\n  - The tenths place (8) is greater than (1)\n  - So 9.8 > 9.11\n\nYou would need to consult DeepSeek\'s API documentation for the exact response format their API returns.',
+                refusal=None,
+                role="assistant",
+                annotations=None,
+                audio=None,
+                function_call=None,
+                tool_calls=None,
+            ),
+        )
+    ],
+    created=1744549757,
+    model="deepseek-chat",
+    object="chat.completion",
+    service_tier=None,
+    system_fingerprint="fp_3d5141a69a_prod0225",
+    usage=CompletionUsage(
+        completion_tokens=371,
+        prompt_tokens=131,
+        total_tokens=502,
+        completion_tokens_details=None,
+        prompt_tokens_details=PromptTokensDetails(audio_tokens=None, cached_tokens=128),
+        prompt_cache_hit_tokens=128,
+        prompt_cache_miss_tokens=3,
+    ),
+)
